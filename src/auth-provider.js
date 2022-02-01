@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const AuthContext = createContext()
 
-const AuthProvider = ({ auth, baseURL, children }) => {
+const AuthProvider = ({ auth, baseURL, children, onLogout }) => {
   const [socket, setSocket] = useState(null)
 
   const request = axios.create({
@@ -14,7 +14,8 @@ const AuthProvider = ({ auth, baseURL, children }) => {
       login: auth.login,
       password: auth.password,
       token: auth.token
-    }
+    },
+    validateStatus: status => (status >= 200 && status < 300) || 401
   })
 
   useEffect(() => {
@@ -32,11 +33,27 @@ const AuthProvider = ({ auth, baseURL, children }) => {
   }, [setSocket, auth, baseURL])
 
   return (
-    <AuthContext.Provider value={{ baseURL, auth, socket, request }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ baseURL, auth, socket, request, onLogout }}>{children}</AuthContext.Provider>
   )
 }
 
 const useAuth = () => useContext(AuthContext)
+
+const useCheckAuth = () => {
+  const { request, onLogout } = useContext(AuthContext)
+
+  useEffect(() => {
+    if (request) {
+      request.get('/status')
+        .then(
+          ({ status }) => status === 401 && onLogout()
+        )
+        .catch(
+          () => onLogout()
+        )
+    }
+  }, [request])
+}
 
 const createUrl = ({ pathname, params }) => {
   const { baseURL, auth } = useContext(AuthContext)
@@ -62,5 +79,6 @@ const createUrl = ({ pathname, params }) => {
 export {
   AuthProvider,
   useAuth,
+  useCheckAuth,
   createUrl
 }

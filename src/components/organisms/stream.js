@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import useStore from './../../store'
-import { useAuth } from './../../auth-provider.js'
+import { useAuth, useCheckAuth } from './../../auth-provider.js'
 
 import SectionTitle from './../atoms/section-title'
 import Navigation from './../molecules/navigation'
@@ -35,6 +35,8 @@ const Overflow = styled.div`
 `
 
 const Stream = observer(() => {
+  useCheckAuth()
+
   const store = useStore()
   const { socket, request } = useAuth()
 

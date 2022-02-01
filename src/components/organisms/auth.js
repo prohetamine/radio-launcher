@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { observer } from 'mobx-react'
 import styled from 'styled-components'
 import useStore from './../../store'
@@ -42,6 +42,19 @@ const Auth = observer(() => {
   const store = useStore()
   const { settings, auth } = store
   const { request } = useAuth()
+  const [form, setForm] = useState({
+    login: '',
+    password: '',
+    host: ''
+  })
+
+  useEffect(() => {
+    if (form.login && form.password && form.host) {
+      auth.login = form.login
+      auth.password = form.password
+      auth.host = `http://${form.host}/`
+    }
+  }, [form, auth])
 
   useEffect(() => {
     if (!settings.backgroundImage) {
@@ -70,32 +83,38 @@ const Auth = observer(() => {
       <Wrapper>
         <Host
           style={{ width: '300px' }}
-          value={auth.value}
-          placeholder='IP'
+          value={form.host}
+          placeholder='IP:PORT'
           onChange={
-            value => {
-              auth.host = value
-            }
+            value =>
+              setForm(form => ({
+                ...form,
+                host: value
+              }))
           }
         />
         <Login
           style={{ width: '300px' }}
-          value={auth.value}
+          value={form.login}
           placeholder='Логин'
           onChange={
-            value => {
-              auth.login = value
-            }
+            value =>
+              setForm(form => ({
+                ...form,
+                login: value
+              }))
           }
         />
         <Password
           style={{ width: '300px' }}
-          value={auth.password}
+          value={form.password}
           placeholder='Пароль'
           onChange={
-            value => {
-              auth.password = value
-            }
+            value =>
+              setForm(form => ({
+                ...form,
+                password: value
+              }))
           }
         />
       </Wrapper>

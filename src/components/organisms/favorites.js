@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import styled from 'styled-components'
 import useStore from './../../store'
-import { useAuth } from './../../auth-provider.js'
+import { useAuth, useCheckAuth } from './../../auth-provider.js'
 
 import useLocalStorageState from 'use-local-storage-state'
 
@@ -21,6 +21,8 @@ const Body = styled.div`
 `
 
 const Favorites = observer(() => {
+  useCheckAuth()
+  
   const store = useStore()
   const { request } = useAuth()
   const [search, setSearch] = useLocalStorageState('favorite-search', '')
