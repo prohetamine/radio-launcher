@@ -314,13 +314,13 @@ const MainNavigation = observer(() => {
                     />
                     <SmallText
                       style={{
-                        color: settings.theme === 'dark' && '#A2A2A2'
+                        color: settings.theme === 'dark' && '#848484'
                                   ? isEther
                                       ? '#DF1414'
                                       : '#848484'
                                   : isEther
                                       ? '#DF1414'
-                                      : '#A2A2A2'
+                                      : '#848484'
                       }}
                     >Эфир</SmallText>
                   </Wrapper>
