@@ -87,6 +87,33 @@ const ColumnButtons = styled.div`
   justify-content: space-between;
 `
 
+const fromTo = (a, b, step, time, callback) => {
+   let _a = a
+   let _b = b
+
+   const timeId = setInterval(() => {
+     if (a < b) {
+        if (_a >= _b) {
+           clearInterval(timeId)
+           return
+        }
+     } else {
+        if (_a <= _b) {
+           clearInterval(timeId)
+           return
+        }
+     }
+
+     callback(_a.toFixed(2))
+     if (a < b) {
+        _a += step
+     } else {
+        _a -= step
+     }
+   }, time)
+}
+
+
 const MainNavigation = observer(() => {
   const store = useStore()
   const { settings } = store
@@ -191,7 +218,7 @@ const MainNavigation = observer(() => {
                   }
                   onDoubleClick={
                     () =>
-                      setVolumeAudio(volumeLocalAudio)
+                      fromTo(volumeAudio, volumeLocalAudio, 0.01, 10, setVolumeAudio)
                   }
                   max={2}
                   min={0}
@@ -209,7 +236,7 @@ const MainNavigation = observer(() => {
                   }
                   onDoubleClick={
                     () =>
-                      setVolumeLocalAudio(volumeAudio)
+                      fromTo(volumeLocalAudio, volumeAudio, 0.01, 10, setVolumeLocalAudio)
                   }
                   max={2}
                   min={0}
@@ -226,7 +253,7 @@ const MainNavigation = observer(() => {
                   }
                   onDoubleClick={
                     () =>
-                      setVolumeStream(volumeLocalStream)
+                      fromTo(volumeStream, volumeLocalStream, 0.01, 10, setVolumeStream)
                   }
                   max={2}
                   min={0}
@@ -243,7 +270,7 @@ const MainNavigation = observer(() => {
                   }
                   onDoubleClick={
                     () =>
-                      setVolumeLocalStream(volumeStream)
+                      fromTo(volumeLocalStream, volumeStream, 0.01, 10, setVolumeLocalStream)
                   }
                   max={2}
                   min={0}
@@ -363,13 +390,13 @@ const MainNavigation = observer(() => {
                   />
                   <SmallText
                     style={{
-                      color: settings.theme === 'dark' && '#A2A2A2'
+                      color: settings.theme === 'dark' && '#848484'
                                 ? isEther
                                     ? '#DF1414'
                                     : '#848484'
                                 : isEther
                                     ? '#DF1414'
-                                    : '#A2A2A2'
+                                    : '#848484'
                     }}
                   >Эфир</SmallText>
                 </Wrapper>
