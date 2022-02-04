@@ -17,7 +17,7 @@ const Slider = styled.canvas`
   border-radius: 5px;
 `
 
-const MediaRange = ({ value, onChange, max, min, theme, label }) => {
+const MediaRange = ({ value, onChange, onDoubleClick, max, min, theme, label }) => {
   const ref = useRef()
   const [move, setMove] = useState(0.5)
   const [down, setDown] = useState(false)
@@ -75,7 +75,7 @@ const MediaRange = ({ value, onChange, max, min, theme, label }) => {
 
   return (
     <Body>
-      <Slider theme={theme} ref={ref} width={40} height={93} />
+      <Slider onDoubleClick={onDoubleClick} theme={theme} ref={ref} width={40} height={93} />
       <SmallText theme={theme} style={{ marginTop: '6px' }}>{label}</SmallText>
     </Body>
   )

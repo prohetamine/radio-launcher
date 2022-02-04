@@ -189,6 +189,10 @@ const MainNavigation = observer(() => {
                       setVolumeAudio(value)
                     }
                   }
+                  onDoubleClick={
+                    () =>
+                      setVolumeAudio(volumeLocalAudio)
+                  }
                   max={2}
                   min={0}
                   theme={settings.theme}
@@ -203,6 +207,10 @@ const MainNavigation = observer(() => {
                       setVolumeLocalAudio(value)
                     }
                   }
+                  onDoubleClick={
+                    () =>
+                      setVolumeLocalAudio(volumeAudio)
+                  }
                   max={2}
                   min={0}
                   theme={settings.theme}
@@ -216,6 +224,10 @@ const MainNavigation = observer(() => {
                       setVolumeStream(value)
                     }
                   }
+                  onDoubleClick={
+                    () =>
+                      setVolumeStream(volumeLocalStream)
+                  }
                   max={2}
                   min={0}
                   theme={settings.theme}
@@ -228,6 +240,10 @@ const MainNavigation = observer(() => {
                       setLocalAnalysers(true)
                       setVolumeLocalStream(value)
                     }
+                  }
+                  onDoubleClick={
+                    () =>
+                      setVolumeLocalStream(volumeStream)
                   }
                   max={2}
                   min={0}
