@@ -32,9 +32,9 @@ const ShadowBackground = observer(({ style }) => {
         const svg = new Blob(
           [`
             <svg xmlns="http://www.w3.org/2000/svg" width="${window.innerWidth}" height="${window.innerHeight}">
-              <foreignObject width="100%" height="100%">
+              <foreignObject width="${window.innerWidth}px" height="${window.innerHeight}px">
                 <div xmlns="http://www.w3.org/1999/xhtml" style="font-size:40px">
-                  <div style='width: 100%; height: 100vh; background-image: url(${settings.backgroundImage}); background-size: cover; background-position: center center;'>
+                  <div style='width: ${window.innerWidth}px; height: ${window.innerHeight}px; background-image: url(${settings.backgroundImage}); background-size: cover; background-position: center;'>
                   </div>
                 </div>
               </foreignObject>
@@ -75,7 +75,6 @@ const ShadowBackground = observer(({ style }) => {
             canvas.height = height
 
             ctx.putImageData(imageData, 0, 0)
-
             setImage(canvas.toDataURL('image/png'))
           }
 
@@ -95,9 +94,9 @@ const ShadowBackground = observer(({ style }) => {
       brightness={settings.brightness}
       ref={ref}
       style={{
+        ...style,
         opacity: isImageProcessing ? 0 : 1,
-        backgroundImage: `url(${image})`,
-        ...style
+        backgroundImage: `url(${image})`
       }}
     />
   )

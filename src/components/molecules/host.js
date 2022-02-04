@@ -1,6 +1,6 @@
 import React from 'react'
-import miniProfileIconLight from './../../../assets/svg/mini-profile-light.svg'
-import miniProfileIconDark from './../../../assets/svg/mini-profile-dark.svg'
+import miniHostIconLight from './../../../assets/svg/mini-host-light.svg'
+import miniHostIconDark from './../../../assets/svg/mini-host-dark.svg'
 
 import Input from './../atoms/input'
 
@@ -9,8 +9,8 @@ const Login = (props) => (
     type='host'
     {...props}
     icons={{
-      light: miniProfileIconLight,
-      dark: miniProfileIconDark
+      light: miniHostIconLight,
+      dark: miniHostIconDark
     }}
   />
 )

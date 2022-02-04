@@ -13,7 +13,7 @@ const Canvas = observer(({ isAnalyse, analyser, canvas: { width, height, positio
     if (node) {
       const ctx = node.getContext('2d')
       ctx.imageSmoothingQuality = 'high'
-      ctx.fillStyle = store.settings.theme === 'dark' ? '#141414' : '#fff'
+      ctx.fillStyle = store.settings.theme === 'dark' ? '#020202' : '#fff'
       ctx.strokeStyle = '#00000000'
 
       if (isAnalyse && analyser) {

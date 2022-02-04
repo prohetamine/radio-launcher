@@ -18,7 +18,7 @@ const Body = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: ${props => props.theme === 'light' ? '#141414' : '#ffffff'};
+  background: ${props => props.theme === 'light' ? '#020202' : '#ffffff'};
   position: absolute;
   display: flex;
   justify-content: center;

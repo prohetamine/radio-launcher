@@ -9,7 +9,7 @@ import miniDeleteIconDark from './../../../assets/svg/mini-delete-dark.svg'
 const Body = styled.div`
   width: 100%;
   height: 46px;
-  background: ${props => props.theme === 'dark' ? '#141414' : '#FFFFFF'};
+  background: ${props => props.theme === 'dark' ? '#020202' : '#FFFFFF'};
   box-shadow: ${props => props.theme === 'dark' ? '0px 2px 8px rgba(40, 40, 40, 0.15), 0px 0px 2px rgb(68, 68, 68, 0.30)' : '0px 2px 8px rgba(111, 111, 111, 0.15), 0px 0px 2px rgb(34, 34, 34, 0.30)'};
   border-radius: 5px;
   margin-bottom: 14px;

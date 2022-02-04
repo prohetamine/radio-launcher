@@ -5,7 +5,8 @@
   "main": "radio-station/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "dev": "MODE=dev webpack-dev-server --config webpack.config.js"
+    "dev": "MODE=dev webpack-dev-server --config webpack.config.js",
+    "start": "npm i && node index.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,14 @@
     "url": "https://github.com/prohetamine/radio-station-launcher/issues"
   },
   "homepage": "https://github.com/prohetamine/radio-station-launcher#readme",
-  "dependencies": {},
+  "dependencies": {
+    "cfonts": "^2.10.0",
+    "express": "^4.17.2",
+    "fs-extra": "^10.0.0",
+    "openurl": "^1.1.1",
+    "path": "^0.12.7",
+    "split-slice": "^0.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/plugin-syntax-jsx": "^7.16.7",

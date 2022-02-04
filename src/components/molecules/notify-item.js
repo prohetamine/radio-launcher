@@ -25,7 +25,7 @@ const Body = styled.div`
   width: 525px;
   min-width: 525px;
   height: 100%;
-  background: ${props => props.theme === 'dark' ? '#141414' : '#fff'};
+  background: ${props => props.theme === 'dark' ? '#020202' : '#fff'};
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -44,7 +44,7 @@ const OtherBody = styled.div`
 const EmptyBody = styled.div`
   width: 100%;
   height: 100%;
-  background: ${props => props.theme === 'dark' ? '#141414' : '#fff'};
+  background: ${props => props.theme === 'dark' ? '#020202' : '#fff'};
 `
 
 const DeleteBody = styled.div`

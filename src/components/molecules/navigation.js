@@ -24,7 +24,7 @@ const Body = styled.div`
   user-select: none;
   width: 404px;
   height: 69px;
-  background: ${props => props.theme === 'dark' ? '#141414' : '#FFFFFF'};
+  background: ${props => props.theme === 'dark' ? '#020202' : '#FFFFFF'};
   box-shadow: ${props => props.theme === 'dark' ? '0px 2px 8px rgba(40, 40, 40, 0.15), 0px 0px 2px rgb(68, 68, 68, 0.30)' : '0px 2px 8px rgba(111, 111, 111, 0.15), 0px 0px 2px rgb(34, 34, 34, 0.30)'};
   border-radius: 8px;
   margin-bottom: 14px;
@@ -55,7 +55,7 @@ const Menu = styled.div`
   user-select: none;
   width: 200px;
   max-height: 300px;
-  background: ${props => props.theme === 'dark' ? '#141414' : '#FFFFFF'};
+  background: ${props => props.theme === 'dark' ? '#020202' : '#FFFFFF'};
   box-shadow: ${props => props.theme === 'dark' ? '0px 2px 8px rgba(40, 40, 40, 0.15), 0px 0px 2px rgb(68, 68, 68, 0.30)' : '0px 2px 8px rgba(111, 111, 111, 0.15), 0px 0px 2px rgb(34, 34, 34, 0.30)'};
   border-radius: 8px;
   margin-bottom: 14px;
@@ -74,8 +74,8 @@ const ImageSelect = styled.div`
 `
 
 const ImageOption = styled.div`
-  width: 85px;
-  height: 85px;
+  width: 42.5px;
+  height: 42.5px;
   background-image: url(${props => props.src});
   background-size: cover;
   background-position: center center;
@@ -107,7 +107,7 @@ const Range = styled.input`
     height: 28px;
     width: 28px;
     border-radius: 5px;
-    background: ${props => props.theme === 'dark' ? '#141414' : '#ffffff'};
+    background: ${props => props.theme === 'dark' ? '#020202' : '#ffffff'};
     cursor: pointer;
     -webkit-appearance: none;
   }
@@ -118,7 +118,7 @@ const Button = styled.div`
   height: 36px;
   border-radius: 5px;
   background: ${props => props.theme === 'dark' ? '#A1A1A1' : '#848484'};
-  color: ${props => props.theme === 'dark' ? '#141414' : '#ffffff'};
+  color: ${props => props.theme === 'dark' ? '#020202' : '#ffffff'};
   display: flex;
   justify-content: center;
   align-items: center;

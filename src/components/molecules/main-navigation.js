@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import normalize from './../../../utils/normalize'
 import { observer } from 'mobx-react'
@@ -67,7 +67,7 @@ const Wrapper = styled.div`
 `
 
 const CanvasWrapper = styled.div`
-  width: 180px;
+  width: 190px;
   height: 105px;
   user-select: none;
   font-size: 0px;
@@ -90,11 +90,14 @@ const ColumnButtons = styled.div`
 const MainNavigation = observer(() => {
   const store = useStore()
   const { settings } = store
+
   const { socket, request } = useAuth()
+
   const track = useCurrentTrack({
     socket,
     request
   })
+
   const _audio = useAudio()
   useMediaSource({
     audio: _audio,
@@ -110,6 +113,7 @@ const MainNavigation = observer(() => {
     setVolumeLocalAudio,
     setVolumeLocalStream,
     localAudioAnalyser,
+    localStreamAnalyser,
     streamAnalyser,
     audioAnalyser,
     presenterMedia
@@ -121,6 +125,8 @@ const MainNavigation = observer(() => {
     socket,
     presenterMedia
   })
+
+  const [isLocalAnalysers, setLocalAnalysers] = useState(true)
 
   useEffect(() => {
     store.isEther = isEther
@@ -137,12 +143,16 @@ const MainNavigation = observer(() => {
               >
                 <CanvasWrapper>
                   <SmallText style={{ marginTop: '3px', marginBottom: '1px' }} theme={settings.theme}>
-                    Внешний звук: (Звук. 2)
+                    {isLocalAnalysers ? 'Локальный звук' : 'Внешний звук'}: (Звук {isLocalAnalysers ? 1 : 2})
                   </SmallText>
                   <CanvasAnalyser
                     style={{ marginTop: '6px' }}
                     isAnalyse={true}
-                    analyser={audioAnalyser}
+                    analyser={
+                      isLocalAnalysers
+                        ? localAudioAnalyser
+                        : audioAnalyser
+                    }
                     canvas={{
                       width: 180,
                       height: 34,
@@ -152,12 +162,16 @@ const MainNavigation = observer(() => {
                     }}
                   />
                   <SmallText style={{ marginTop: '7px', marginBottom: '1px' }} theme={settings.theme}>
-                    Внешний микрофон: (Микр. 2)
+                    {isLocalAnalysers ? 'Локальный микрофон' : 'Внешний микрофон'}: (Микр. {isLocalAnalysers ? 1 : 2})
                   </SmallText>
                   <CanvasAnalyser
                     style={{ marginTop: '6px' }}
                     isAnalyse={true}
-                    analyser={streamAnalyser}
+                    analyser={
+                      isLocalAnalysers
+                       ? localStreamAnalyser
+                       : streamAnalyser
+                    }
                     canvas={{
                       width: 180,
                       height: 34,
@@ -169,32 +183,52 @@ const MainNavigation = observer(() => {
                 </CanvasWrapper>
                 <MediaRange
                   value={volumeAudio}
-                  onChange={value => setVolumeAudio(value)}
-                  max={3}
+                  onChange={
+                    value => {
+                      setLocalAnalysers(false)
+                      setVolumeAudio(value)
+                    }
+                  }
+                  max={2}
                   min={0}
                   theme={settings.theme}
                   label='Звук 2'
                 />
                 <MediaRange
                   value={volumeLocalAudio}
-                  onChange={value => setVolumeLocalAudio(value)}
-                  max={3}
+                  onChange={
+                    value => {
+                      setLocalAnalysers(true)
+                      setVolumeLocalAudio(value)
+                    }
+                  }
+                  max={2}
                   min={0}
                   theme={settings.theme}
                   label='Звук 1'
                 />
                 <MediaRange
                   value={volumeStream}
-                  onChange={value => setVolumeStream(value)}
-                  max={3}
+                  onChange={
+                    value => {
+                      setLocalAnalysers(false)
+                      setVolumeStream(value)
+                    }
+                  }
+                  max={2}
                   min={0}
                   theme={settings.theme}
                   label='Микр. 2'
                 />
                 <MediaRange
                   value={volumeLocalStream}
-                  onChange={value => setVolumeLocalStream(value)}
-                  max={3}
+                  onChange={
+                    value => {
+                      setLocalAnalysers(true)
+                      setVolumeLocalStream(value)
+                    }
+                  }
+                  max={2}
                   min={0}
                   theme={settings.theme}
                   label='Микр. 1'

@@ -30,7 +30,7 @@ const MediaRange = ({ value, onChange, max, min, theme, label }) => {
     const node = ref.current
     if (node) {
       const ctx = node.getContext('2d')
-      ctx.fillStyle = theme === 'dark' ? '#141414' : '#ffffff'
+      ctx.fillStyle = theme === 'dark' ? '#020202' : '#ffffff'
       const normalize = (69 * move) + 20
       ctx.clearRect(0, 0, 40, 93)
       roundRect(ctx, 4, 93 - normalize, 32, normalize - 4, 5)
