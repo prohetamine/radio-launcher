@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { observer } from 'mobx-react'
 import useStore from './../../store'
+import langs from './../../langs'
 import { useAuth, useCheckAuth } from './../../auth-provider.js'
 
 import SectionTitle from './../atoms/section-title'
@@ -90,7 +91,7 @@ const Stream = observer(() => {
         }}
         ref={ref}
       >
-        <SectionTitle theme={store.settings.theme}>Эфир</SectionTitle>
+        <SectionTitle theme={store.settings.theme}>{langs[store.settings.lang].ether}</SectionTitle>
         <Navigation />
         <NotifyItem />
         {

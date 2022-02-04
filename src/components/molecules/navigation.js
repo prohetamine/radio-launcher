@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import useStore from './../../store'
-import backgrounds from './../../../utils/backgrounds'
+import langs from './../../langs'
+import backgrounds from './../../utils/backgrounds'
 import { observer } from 'mobx-react'
 
 import navigationProhetamineLight from './../../../assets/svg/navigation-prohetamine-light.svg'
@@ -158,20 +159,36 @@ const Navigation = observer(() => {
         }}
       >
         <Image src={settings.theme === 'dark' ? navigationSettingsDark : navigationSettingsLight} />
-        <SmallText theme={settings.theme} style={{ color: settings.theme === 'dark' ? '#848484' : '#A2A2A2' }}>Настройки</SmallText>
+        <SmallText theme={settings.theme} style={{ color: settings.theme === 'dark' ? '#848484' : '#A2A2A2' }}>{langs[settings.lang].settings}</SmallText>
         {
           isSettingMenu
             ? (
               <Menu style={{ cursor: 'default' }} theme={settings.theme} onClick={(e) => e.stopPropagation()} onMouseEnter={() => setSettingMenu(true)} onMouseLeave={() => setSettingMenu(false)}>
-                <MiddleText theme={settings.theme} style={{ marginBottom: '8px' }}>Подавление эха</MiddleText>
+                <MiddleText theme={settings.theme} style={{ marginBottom: '8px' }}>{langs[settings.lang].echo_cancellation}</MiddleText>
                 <Button
                   onClick={() => {
                     settings.echoCancellation = !settings.echoCancellation
                     window.location.reload()
                   }}
                   theme={settings.theme}
-                >{settings.echoCancellation ? 'Да' : 'Нет'}</Button>
-                <MiddleText theme={settings.theme} style={{ marginTop: '10px', marginBottom: '8px' }}>Авторизация</MiddleText>
+                >{settings.echoCancellation ? langs[settings.lang].yes : langs[settings.lang].no}</Button>
+                <MiddleText theme={settings.theme} style={{ marginTop: '10px', marginBottom: '8px' }}>{langs[settings.lang].lang}</MiddleText>
+                <Button
+                  style={{
+                     marginBottom: '5px'
+                  }}
+                  onClick={() => {
+                    settings.lang = 'ru'
+                  }}
+                  theme={settings.theme}
+                >{langs[settings.lang].russian}</Button>
+                <Button
+                  onClick={() => {
+                    settings.lang = 'en'
+                  }}
+                  theme={settings.theme}
+                >{langs[settings.lang].english}</Button>
+                <MiddleText theme={settings.theme} style={{ marginTop: '10px', marginBottom: '8px' }}>{langs[settings.lang].auth}</MiddleText>
                 <Button
                   onClick={() => {
                     auth.token = ''
@@ -180,7 +197,7 @@ const Navigation = observer(() => {
                     window.location.reload()
                   }}
                   theme={settings.theme}
-                >Выйти</Button>
+                >{langs[settings.lang].exit}</Button>
               </Menu>
             )
             : (
@@ -207,7 +224,7 @@ const Navigation = observer(() => {
                   : navigationImageNoLight
           }
         />
-        <SmallText theme={settings.theme} style={{ color: settings.theme === 'dark' ? '#848484' : '#A2A2A2' }}>Изображения</SmallText>
+      <SmallText theme={settings.theme} style={{ color: settings.theme === 'dark' ? '#848484' : '#A2A2A2' }}>{langs[settings.lang].images}</SmallText>
       </Wrapper>
       <Wrapper
         style={{ marginLeft: '10px', position: 'relative' }}
@@ -228,14 +245,14 @@ const Navigation = observer(() => {
                   : navigationThemeLightLight
           }
         />
-        <SmallText theme={settings.theme} style={{ color: settings.theme === 'dark' ? '#848484' : '#A2A2A2' }}>Тема</SmallText>
+      <SmallText theme={settings.theme} style={{ color: settings.theme === 'dark' ? '#848484' : '#A2A2A2' }}>{langs[settings.lang].theme}</SmallText>
         {
           isThemeMenu
             ? (
               <Menu style={{ cursor: 'default' }} theme={settings.theme} onClick={(e) => e.stopPropagation()} onMouseEnter={() => setThemeMenu(true)} onMouseLeave={() => setThemeMenu(false)}>
-                <MiddleText theme={settings.theme} style={{ marginBottom: '8px' }}>Контраст</MiddleText>
+                <MiddleText theme={settings.theme} style={{ marginBottom: '8px' }}>{langs[settings.lang].contrast}</MiddleText>
                 <Range theme={settings.theme} type='range' max={1} min={0} step={0.01} value={settings.brightness} onChange={({ target: { value } }) => settings.brightness = value} />
-                <MiddleText theme={settings.theme} style={{ marginTop: '10px', marginBottom: '8px' }}>Фоновая картинка</MiddleText>
+                <MiddleText theme={settings.theme} style={{ marginTop: '10px', marginBottom: '8px' }}>{langs[settings.lang].background_image}</MiddleText>
                 <ImageSelect>
                   {
                     backgrounds.map(

@@ -2,6 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import styled from 'styled-components'
 import useStore from './../../store'
+import langs from './../../langs'
 import { useAuth, useCheckAuth } from './../../auth-provider.js'
 
 import useLocalStorageState from 'use-local-storage-state'
@@ -22,7 +23,7 @@ const Body = styled.div`
 
 const Favorites = observer(() => {
   useCheckAuth()
-  
+
   const store = useStore()
   const { request } = useAuth()
   const [search, setSearch] = useLocalStorageState('favorite-search', '')
@@ -30,8 +31,13 @@ const Favorites = observer(() => {
 
   return (
     <Body>
-      <SectionTitle theme={store.settings.theme}>Закладки</SectionTitle>
-      <Search type='favorites' placeholder='Поиск' value={search} onChange={value => setSearch(value)} />
+      <SectionTitle theme={store.settings.theme}>{langs[store.settings.lang].favorites}</SectionTitle>
+      <Search
+        type='favorites'
+        placeholder={langs[store.settings.lang].search} 
+        value={search}
+        onChange={value => setSearch(value)}
+      />
       {
         store.favorites
           .filter(track => {

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import langs from './../../langs'
 import { arrayBufferToBlob } from 'blob-util'
+import useStore from './../../store'
+import { observer } from 'mobx-react'
 
 import addTrackBackgroundLight from './../../../assets/svg/add-track-background-light.svg'
 import addTrackBackgroundDark from './../../../assets/svg/add-track-background-dark.svg'
@@ -25,7 +28,8 @@ const Body = styled.div`
   margin-top: 14px;
 `
 
-const AddTrack = ({ theme, onLoad, count }) => {
+const AddTrack = observer(({ theme, onLoad, count }) => {
+  const { settings } = useStore()
   const [isLoad, setLoad] = useState(false)
   const [loadCountTracks, setLoadCountTracks] = useState(0)
   const [loadIndexTrack, setLoadIndexTrack] = useState(0)
@@ -67,10 +71,10 @@ const AddTrack = ({ theme, onLoad, count }) => {
           {
             isLoad
               ? (
-                <BigText theme={theme} style={{ marginLeft: '60px' }}>Загрузка треков: {loadIndexTrack} из {loadCountTracks}</BigText>
+                <BigText theme={theme} style={{ marginLeft: '60px' }}>{langs[settings.lang].loading_tracks(loadIndexTrack, loadCountTracks)}</BigText>
               )
               : (
-                <BigText theme={theme} style={{ marginLeft: '60px' }}>Добавить треки (всего: {count})</BigText>
+                <BigText theme={theme} style={{ marginLeft: '60px' }}>{langs[settings.lang].added_tracks(count)}</BigText>
               )
           }
         </Body>
@@ -84,6 +88,6 @@ const AddTrack = ({ theme, onLoad, count }) => {
       />
     </>
   )
-}
+})
 
 export default AddTrack

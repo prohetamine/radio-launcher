@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import normalize from './../../../utils/normalize'
+import normalize from './../../utils/normalize'
 import useStore from './../../store'
+import langs from './../../langs'
 import { observer } from 'mobx-react'
 import { createUrl } from './../../auth-provider.js'
 
@@ -89,19 +90,19 @@ const StreamItem = observer(({
           track.type === 'queue'
             ? (
               <>
-                <BigText theme={settings.theme} style={{ marginBottom: '12px' }}>{title ? normalize.text(title, 45) : 'Не заполнено'}</BigText>
-                <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.artist ? normalize.text(track.artist, 50) : 'Не заполнено'}</MiddleText>
-                <MiddleText theme={settings.theme}>{track.album ? normalize.text(track.album, 50) : 'Не заполнено'}</MiddleText>
+                <BigText theme={settings.theme} style={{ marginBottom: '12px' }}>{title ? normalize.text(title, 45) : langs[settings.lang].empty}</BigText>
+                <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.artist ? normalize.text(track.artist, 50) : langs[settings.lang].empty}</MiddleText>
+                <MiddleText theme={settings.theme}>{track.album ? normalize.text(track.album, 50) : langs[settings.lang].empty}</MiddleText>
               </>
             )
             : (
               <>
-                <BigText theme={settings.theme} style={{ marginBottom: '12px' }}>Случайный порядок: {title ? normalize.text(title, 26) : 'Не заполнено'}</BigText>
-                <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.artist ? normalize.text(track.artist, 50) : `случаный из ${count} треков`}</MiddleText>
+                <BigText theme={settings.theme} style={{ marginBottom: '12px' }}>{langs[settings.lang].random}: {title ? normalize.text(title, 26) : langs[settings.lang].empty}</BigText>
+                <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.artist ? normalize.text(track.artist, 50) : langs[settings.lang].random_count(count)}</MiddleText>
                 {
                   (track.album && track.artist)
                     ? (
-                      <MiddleText theme={settings.theme}>{track.album ? normalize.text(track.album, 50) : 'Не заполнено'}</MiddleText>
+                      <MiddleText theme={settings.theme}>{track.album ? normalize.text(track.album, 50) : langs[settings.lang].empty}</MiddleText>
                     )
                     : null
                 }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
-import normalize from './../../../utils/normalize'
+import normalize from './../../utils/normalize'
 import { observer } from 'mobx-react'
 import useStore from './../../store'
+import langs from './../../langs'
 import { createUrl } from './../../auth-provider.js'
 
 import trackItemBackgroundLight from './../../../assets/svg/track-item-background-light.svg'
@@ -109,16 +110,16 @@ const TrackItem = observer(({
       <First>
         <Picture style={{ opacity: (settings.pictureAlbum && track.isAlbumImage) ? 1 : 0 }} draggable={false} src={createUrl({ pathname: 'picture', params: { id: track.id }})} alt={track.id} />
         <Profile>
-          <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>Исполнитель: </SmallText>
-          <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.artist ? normalize.text(track.artist, 19) : 'Не заполненно'}</MiddleText>
-          <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>Альбом: </SmallText>
-          <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.album ? normalize.text(track.album, 19) : 'Не заполненно'}</MiddleText>
-          <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>Дата: </SmallText>
-          <MiddleText theme={settings.theme}>{track.date ? normalize.date(track.date) || track.date : 'Не заполненно'}</MiddleText>
+          <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>{langs[settings.lang].executor}: </SmallText>
+          <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.artist ? normalize.text(track.artist, 19) : langs[settings.lang].empty}</MiddleText>
+          <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>{langs[settings.lang].album}: </SmallText>
+          <MiddleText theme={settings.theme} style={{ marginBottom: '10px' }}>{track.album ? normalize.text(track.album, 19) : langs[settings.lang].empty}</MiddleText>
+          <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>{langs[settings.lang].date}: </SmallText>
+          <MiddleText theme={settings.theme}>{track.date ? normalize.date(track.date) || track.date : langs[settings.lang].empty}</MiddleText>
         </Profile>
       </First>
       <Last>
-        <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>Название: </SmallText>
+        <SmallText theme={settings.theme} style={{ marginBottom: '7px' }}>{langs[settings.lang].name}: </SmallText>
         <BigText theme={settings.theme}>{track.title ? normalize.text(track.title, 34) : normalize.text(track.filename, 34)}</BigText>
       </Last>
     </Body>

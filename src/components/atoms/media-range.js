@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 import SmallText from './small-text'
-import roundRect from './../../../utils/round-rect'
+import roundRect from './../../utils/round-rect'
 
 const Body = styled.div`
   width: 60px;

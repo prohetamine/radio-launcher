@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import normalize from './../../../utils/normalize'
+import langs from './../../langs'
+import normalize from './../../utils/normalize'
 import { observer } from 'mobx-react'
 import useStore from './../../store'
 import { useAuth } from './../../auth-provider.js'
@@ -170,7 +171,7 @@ const MainNavigation = observer(() => {
               >
                 <CanvasWrapper>
                   <SmallText style={{ marginTop: '3px', marginBottom: '1px' }} theme={settings.theme}>
-                    {isLocalAnalysers ? 'Локальный звук' : 'Внешний звук'}: (Звук {isLocalAnalysers ? 1 : 2})
+                    {isLocalAnalysers ? langs[settings.lang].localSound : langs[settings.lang].outputSound}: ({langs[settings.lang].sound} {isLocalAnalysers ? 1 : 2})
                   </SmallText>
                   <CanvasAnalyser
                     style={{ marginTop: '6px' }}
@@ -189,7 +190,7 @@ const MainNavigation = observer(() => {
                     }}
                   />
                   <SmallText style={{ marginTop: '7px', marginBottom: '1px' }} theme={settings.theme}>
-                    {isLocalAnalysers ? 'Локальный микрофон' : 'Внешний микрофон'}: (Микр. {isLocalAnalysers ? 1 : 2})
+                    {isLocalAnalysers ? langs[settings.lang].localMicrophone : langs[settings.lang].outputMicrophone}: ({langs[settings.lang].mic} {isLocalAnalysers ? 1 : 2})
                   </SmallText>
                   <CanvasAnalyser
                     style={{ marginTop: '6px' }}
@@ -223,7 +224,7 @@ const MainNavigation = observer(() => {
                   max={2}
                   min={0}
                   theme={settings.theme}
-                  label='Звук 2'
+                  label={`${langs[settings.lang].sound} 2`}
                 />
                 <MediaRange
                   value={volumeLocalAudio}
@@ -241,7 +242,7 @@ const MainNavigation = observer(() => {
                   max={2}
                   min={0}
                   theme={settings.theme}
-                  label='Звук 1'
+                  label={`${langs[settings.lang].sound} 1`}
                 />
                 <MediaRange
                   value={volumeStream}
@@ -258,7 +259,7 @@ const MainNavigation = observer(() => {
                   max={2}
                   min={0}
                   theme={settings.theme}
-                  label='Микр. 2'
+                  label={`${langs[settings.lang].mic} 2`}
                 />
                 <MediaRange
                   value={volumeLocalStream}
@@ -275,7 +276,7 @@ const MainNavigation = observer(() => {
                   max={2}
                   min={0}
                   theme={settings.theme}
-                  label='Микр. 1'
+                  label={`${langs[settings.lang].mic} 1`}
                 />
                 <ColumnButtons>
                   <Wrapper style={{ marginLeft: '10px' }} onClick={() => setPlay(s => !s)}>
@@ -295,8 +296,8 @@ const MainNavigation = observer(() => {
                     >
                       {
                         (isPlay && volumeLocalAudio !== 0)
-                          ? 'Звук'
-                          : 'Мут'
+                          ? langs[settings.lang].sound
+                          : langs[settings.lang].muted
                       }
                     </SmallText>
                   </Wrapper>
@@ -322,7 +323,7 @@ const MainNavigation = observer(() => {
                                       ? '#DF1414'
                                       : '#848484'
                       }}
-                    >Эфир</SmallText>
+                    >{langs[settings.lang].ether}</SmallText>
                   </Wrapper>
                 </ColumnButtons>
               </Body>
@@ -347,10 +348,10 @@ const MainNavigation = observer(() => {
                   }}
                 />
                 <Profile>
-                  <MiddleText theme={settings.theme} style={{ marginBottom: '7px' }}>Сейчас играет:</MiddleText>
+                  <MiddleText theme={settings.theme} style={{ marginBottom: '7px' }}>{langs[settings.lang].now_playing}:</MiddleText>
                   <BigText theme={settings.theme}>
                     {
-                      normalize.text(track.title || track.filename || 'Загрузка..', 38)
+                      normalize.text(track.title || track.filename || langs[settings.lang].loading, 38)
                     }
                   </BigText>
                 </Profile>
@@ -371,8 +372,8 @@ const MainNavigation = observer(() => {
                   >
                     {
                       (isPlay && volumeLocalAudio !== 0)
-                        ? 'Звук'
-                        : 'Мут'
+                        ? langs[settings.lang].sound
+                        : langs[settings.lang].muted
                     }
                   </SmallText>
                 </Wrapper>
@@ -398,7 +399,7 @@ const MainNavigation = observer(() => {
                                     ? '#DF1414'
                                     : '#848484'
                     }}
-                  >Эфир</SmallText>
+                  >{langs[settings.lang].ether}</SmallText>
                 </Wrapper>
               </Body>
             )

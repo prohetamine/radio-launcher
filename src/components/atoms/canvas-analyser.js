@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import canvasAnalyserAnimation from './../../../utils/canvas-analyser-animation'
+import canvasAnalyserAnimation from './../../utils/canvas-analyser-animation'
 import { observer } from 'mobx-react'
 import useStore from './../../store'
 

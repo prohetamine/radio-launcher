@@ -15,9 +15,9 @@ try {
     },
     settings: {
       theme: 'light',
-      lang: 'ru',
+      lang: 'en',
       pictureAlbum: true,
-      brightness: 0.4,
+      brightness: 1,
       backgroundImage: '',
       echoCancellation: false
     },

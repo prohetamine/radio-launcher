@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { observer } from 'mobx-react'
 import styled from 'styled-components'
 import useStore from './../../store'
+import langs from './../../langs'
 import { useAuth, useCheckAuth } from './../../auth-provider.js'
 
 import useLocalStorageState from 'use-local-storage-state'
@@ -23,7 +24,7 @@ const Body = styled.div`
 
 const Tracks = observer(() => {
   useCheckAuth()
-  
+
   const store = useStore()
   const { socket, request } = useAuth()
 
@@ -68,7 +69,6 @@ const Tracks = observer(() => {
       })
 
       socket.emit('allTracks')
-
       return () => socket.off('onAllTracks')
     }
   }, [socket, request])
@@ -77,8 +77,13 @@ const Tracks = observer(() => {
 
   return (
     <Body>
-      <SectionTitle theme={store.settings.theme}>Треки</SectionTitle>
-      <Search type='tracks' placeholder='Поиск' value={search} onChange={value => setSearch(value)} />
+      <SectionTitle theme={store.settings.theme}>{langs[store.settings.lang].tracks}</SectionTitle>
+      <Search
+        type='tracks'
+        placeholder={langs[store.settings.lang].search}
+        value={search}
+        onChange={value => setSearch(value)}
+      />
       <AddTrack
         theme={store.settings.theme}
         onLoad={

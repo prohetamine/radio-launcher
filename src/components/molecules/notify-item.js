@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import useStore from './../../store'
+import langs from './../../langs'
 import { observer } from 'mobx-react'
 
 import miniDeleteBackgroundLight from './../../../assets/svg/mini-delete-backgroud-light.svg'
@@ -70,16 +71,16 @@ const NotifyItem = observer(() => {
   return hideNotify ? null : (
     <MainBody theme={settings.theme}>
       <Body theme={settings.theme}>
-        Приветствую, ведущий! У меня для тебя есть несколько важных слов, мои инструкции помогут тебе вести трансляцию без проблем.
+        {langs[settings.lang].notify[0]}
         <br />
         <br />
-        <b>1.</b> Никогда не пытайся в ручную добавлять или изменять треки в рабочей папке!
+        <b>1.</b> {langs[settings.lang].notify[1]}
         <br />
         <br />
-        <b>2.</b> Случайный порядок треков включается и выключается автоматически после добавления трека или звукозаписи.
+        <b>2.</b> {langs[settings.lang].notify[2]}
         <br />
         <br />
-        <b>3.</b> Добавь больше треков чтоб они не повторялись в режиме случайного порядка.
+        <b>3.</b> {langs[settings.lang].notify[3]}
       </Body>
       <OtherBody>
         <DeleteBody theme={settings.theme}>

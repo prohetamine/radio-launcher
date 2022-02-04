@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { observer } from 'mobx-react'
 import styled from 'styled-components'
 import useStore from './../../store'
+import langs from './../../langs'
 import { useAuth } from './../../auth-provider.js'
-import backgrounds from './../../../utils/backgrounds'
+import backgrounds from './../../utils/backgrounds'
 
 import Background from './../atoms/background'
 import Login from './../molecules/login'
@@ -96,7 +97,7 @@ const Auth = observer(() => {
         <Login
           style={{ width: '300px' }}
           value={form.login}
-          placeholder='Логин'
+          placeholder={langs[settings.lang].login}
           onChange={
             value =>
               setForm(form => ({
@@ -108,7 +109,7 @@ const Auth = observer(() => {
         <Password
           style={{ width: '300px' }}
           value={form.password}
-          placeholder='Пароль'
+          placeholder={langs[settings.lang].password}
           onChange={
             value =>
               setForm(form => ({
