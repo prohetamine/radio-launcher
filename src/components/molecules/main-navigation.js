@@ -198,6 +198,7 @@ const MainNavigation = observer(() => {
                   value={volumeLocalAudio}
                   onChange={
                     value => {
+                      setPlay(true)
                       setLocalAnalysers(true)
                       setVolumeLocalAudio(value)
                     }
