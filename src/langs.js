@@ -41,7 +41,9 @@ const en = {
     'Never try to manually add or change tracks in the working folder! This is dangerous, the files have a structure outside the folder.',
     'The random order of tracks turns on and off automatically after adding a track or sound recording.',
     "Add more tracks so that they don't repeat in random order mode. If you don't use a queue, this random track can be started multiple times."
-  ]
+  ],
+  hint_favorites: 'To make a bookmark, drag the audio recording from «Tracks»',
+  hint_tracks: 'Just download your first tracks with the .mp3 extension and the broadcast will begin!'
 }
 
 const ru = {
@@ -87,7 +89,9 @@ const ru = {
     'Никогда не пытайся в ручную добавлять или изменять треки в рабочей папке!',
     'Случайный порядок треков включается и выключается автоматически после добавления трека или звукозаписи.',
     'Добавь больше треков чтоб они не повторялись в режиме случайного порядка.'
-  ]
+  ],
+  hint_favorites: 'Чтобы сделать закладку перетяните аудиозапись из «Треки»',
+  hint_tracks: 'Просто загрузите свои первые треки с расширением .mp3 и эфир начнется!'
 }
 
 module.exports = {

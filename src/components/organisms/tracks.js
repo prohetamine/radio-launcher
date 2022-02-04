@@ -8,6 +8,7 @@ import { useAuth, useCheckAuth } from './../../auth-provider.js'
 import useLocalStorageState from 'use-local-storage-state'
 
 import SectionTitle from './../atoms/section-title'
+import Hint from './../atoms/hint'
 import Search from './../molecules/search'
 import AddTrack from './../molecules/add-track'
 import TrackItem from './../molecules/track-item'
@@ -75,61 +76,100 @@ const Tracks = observer(() => {
 
   const regExpSearch = new RegExp(search, 'gi')
 
+  const isHint = store.tracks.length === 0
+
   return (
-    <Body>
-      <SectionTitle theme={store.settings.theme}>{langs[store.settings.lang].tracks}</SectionTitle>
-      <Search
-        type='tracks'
-        placeholder={langs[store.settings.lang].search}
-        value={search}
-        onChange={value => setSearch(value)}
-      />
-      <AddTrack
-        theme={store.settings.theme}
-        onLoad={
-          (blob, name) => {
-            return request.post(`/load?name=${name}`, blob, {
-              headers: {
-                'Content-Type': blob.type
-              }
-            })
+    <Body
+      style={
+        isHint
+          ? {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
           }
-        }
-        count={store.tracks.length}
-      />
+          : null
+      }
+    >
       {
-        store.tracks
-          .filter(track => {
-            const { title, album, artist, date, filename } = track || { title: '', album: '', artist: '', date: '', filename: '' }
-            return title?.match(regExpSearch) || album?.match(regExpSearch) || artist?.match(regExpSearch) || date?.match(regExpSearch) || filename?.match(regExpSearch)
-          })
-          .map(
-            track => (
-              <TrackItem
-                key={track.id}
-                track={track}
+        !isHint
+          ? (
+            <>
+              <SectionTitle theme={store.settings.theme}>{langs[store.settings.lang].tracks}</SectionTitle>
+              <Search
                 type='tracks'
-                onDelete={
-                  () =>
-                    request.get(`/unload?id=${track.id}`).then(({ data }) => {
-                      if (data) {
-                        store.favorites = store.favorites.filter(favorite => favorite.id !== track.id)
+                placeholder={langs[store.settings.lang].search}
+                value={search}
+                onChange={value => setSearch(value)}
+              />
+              <AddTrack
+                theme={store.settings.theme}
+                onLoad={
+                  (blob, name) => {
+                    return request.post(`/load?name=${name}`, blob, {
+                      headers: {
+                        'Content-Type': blob.type
                       }
                     })
-                }
-                onPush={
-                  position => {
-                    if (position < window.innerWidth - 380 && position > 380) {
-                      request.post(`/push?id=${track.id}`)
-                    }
-
-                    if (position < 380) {
-                      store.favorites = [track, ...store.favorites.filter(favorite => favorite.id !== track.id)]
-                    }
                   }
                 }
+                count={store.tracks.length}
               />
-            )
+              {
+                store.tracks
+                  .filter(track => {
+                    const { title, album, artist, date, filename } = track || { title: '', album: '', artist: '', date: '', filename: '' }
+                    return title?.match(regExpSearch) || album?.match(regExpSearch) || artist?.match(regExpSearch) || date?.match(regExpSearch) || filename?.match(regExpSearch)
+                  })
+                  .map(
+                    track => (
+                      <TrackItem
+                        key={track.id}
+                        track={track}
+                        type='tracks'
+                        onDelete={
+                          () =>
+                            request.get(`/unload?id=${track.id}`).then(({ data }) => {
+                              if (data) {
+                                store.favorites = store.favorites.filter(favorite => favorite.id !== track.id)
+                              }
+                            })
+                        }
+                        onPush={
+                          position => {
+                            if (position < window.innerWidth - 380 && position > 380) {
+                              request.post(`/push?id=${track.id}`)
+                            }
+
+                            if (position < 380) {
+                              store.favorites = [track, ...store.favorites.filter(favorite => favorite.id !== track.id)]
+                            }
+                          }
+                        }
+                      />
+                    )
+                  )
+              }
+            </>
+          )
+          : (
+            <>
+              <SectionTitle theme={store.settings.theme}>{langs[store.settings.lang].tracks}</SectionTitle>
+              <Hint theme={store.settings.theme}>{langs[store.settings.lang].hint_tracks}</Hint>
+              <AddTrack
+                theme={store.settings.theme}
+                onLoad={
+                  (blob, name) => {
+                    return request.post(`/load?name=${name}`, blob, {
+                      headers: {
+                        'Content-Type': blob.type
+                      }
+                    })
+                  }
+                }
+                count={store.tracks.length}
+              />
+            </>
           )
       }
     </Body>

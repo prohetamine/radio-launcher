@@ -34,3 +34,7 @@ input[type=range]::-ms-track {
   border-color: transparent;
   color: transparent;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}

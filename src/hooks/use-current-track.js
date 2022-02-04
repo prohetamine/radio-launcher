@@ -15,15 +15,27 @@ const useCurrentTrack = ({ socket, request }) => {
       socket.on('onCurrentTrack', data => {
         request.get(`/info?id=${data.id}`)
             .then(({ data }) => {
-              setTrack({
-                artist: null,
-                date: null,
-                album: null,
-                title: null,
-                filename: data.name,
-                ...data.common,
-                id: data.id
-              })
+              if (data) {
+                setTrack({
+                  artist: null,
+                  date: null,
+                  album: null,
+                  title: null,
+                  filename: data.name,
+                  ...data.common,
+                  id: data.id
+                })
+              } else {
+                setTrack({
+                  artist: null,
+                  date: null,
+                  album: null,
+                  title: null,
+                  filename: null,
+                  id: null
+                })
+              }
+
             })
       })
 

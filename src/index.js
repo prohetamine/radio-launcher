@@ -46,10 +46,7 @@ const App = observer(() => {
         token: auth.token
       }}
       onLogout={() => {
-        auth.login = ''
-        auth.password = ''
-        auth.token = ''
-        auth.host = ''
+        window.localStorage.clear()
         window.location.reload()
       }}
     >

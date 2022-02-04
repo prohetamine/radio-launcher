@@ -51,21 +51,25 @@ const Stream = observer(() => {
             .map(async track => {
               const { data } = await request.get(`/info?id=${track.id}`)
 
-              delete track.name
+              if (data) {
+                delete track.name
 
-              return ({
-                artist: null,
-                date: null,
-                album: null,
-                title: null,
-                filename: data ? data.name : null,
-                isAlbumImage: data.isAlbumImage,
-                ...data.common,
-                ...track,
-              })
+                return ({
+                  artist: null,
+                  date: null,
+                  album: null,
+                  title: null,
+                  filename: data ? data.name : null,
+                  isAlbumImage: data ? data.isAlbumImage : false,
+                  ...data.common,
+                  ...track,
+                })
+              }
+
+              return false
             })
         ).then(stream => {
-          store.stream = stream
+          store.stream = stream.filter(f => f)
         })
       })
 
@@ -95,21 +99,19 @@ const Stream = observer(() => {
         <Navigation />
         <NotifyItem />
         {
-          store.stream.map((track, key) => {
-            return (
-              <StreamItem
-                isImage={store.settings.pictureAlbum}
-                theme={store.settings.theme}
-                key={key}
-                track={track}
-                count={store.tracks.length}
-                onDelete={
-                  () =>
-                    request.post(`/pop?id=${track.streamId}`)
-                }
-              />
-            )
-          })
+          store.stream.map((track, key) => (
+            <StreamItem
+              isImage={store.settings.pictureAlbum}
+              theme={store.settings.theme}
+              key={`${track.streamId}-${track.id}-${key}-${track.type}`}
+              track={track}
+              count={store.tracks.length}
+              onDelete={
+                () =>
+                  request.post(`/pop?id=${track.streamId}`)
+              }
+            />
+          ))
         }
         <ShadowBackground
           style={{
