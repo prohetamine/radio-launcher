@@ -8,7 +8,7 @@ const SmallText = styled.div`
   line-height: 16px;
   display: flex;
   align-items: center;
-  color: ${props => props.theme === 'dark' ? '#848484' : '#848484' };
+  color: #848484;
   height: 7px;
 `
 
