@@ -1,6 +1,6 @@
 ![logo](https://github.com/prohetamine/radio-launcher/blob/main/media/logo.png)
 
-##### README is available in the following languages: [Russian](https://github.com/prohetamine/readme-styled/blob/main/README/russian.md) | [English](https://github.com/prohetamine/readme-styled/blob/main/README.md)
+##### README is available in the following languages: [Russian](https://github.com/prohetamine/radio-launcher/blob/main/README/russian.md) | [English](https://github.com/prohetamine/radio-launcher/blob/main/README.md)
 
 
 # radio-launcher
@@ -41,7 +41,7 @@ This is the main and only menu, but so far there are no tracks and the broadcast
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/2.png)
 
-We are on the air, dragging tracks from the tracks and favorites sections to the air forming a queue order.
+We are on the air, dragging tracks from the "Tracks" and "Favorites" sections to the air forming a queue order.
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/3.png)
 
