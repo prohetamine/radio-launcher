@@ -3,40 +3,42 @@
 ##### README is available in the following languages: [Russian](https://github.com/prohetamine/readme-styled/blob/main/README/russian.md) | [English](https://github.com/prohetamine/readme-styled/blob/main/README.md)
 
 
-# readme-styled
+# radio-launcher
 
-> readme-styled - Slogan, slogan, mini story.
+> radio-launcher - radio-station client.
 
 ### Why ?
-The motivation that influenced the creation of the technology and the description of the problems. This repository was created to adhere to a certain style when creating your own brand and designing a project.
+I decided that I wanted to be a radio host, but I had no particular desire to understand the existing software and I created my own software, maybe someday it will become a standard, I tried to achieve a better result.
 
 ### Get started
 
-Instructions for installing or assembling the project ```readme-styled```
+Clone the github repository and install nodejs
 
 ```sh
-$ ...
-$ ...
-$ ...
-```
-
-other option or options
-
-```sh
-$ ...
-$ ...
-$ ...
+$ git clone git@github.com:prohetamine/radio-launcher.git
+$ cd radio-launcher
+$ npm install
 ```
 
 ### Examples and description
 
-Description of the function, methods, or navigation
+To launch the launcher, use the command
 
 ```sh
-$ ...
+$ npm run start
 ```
 
-Other examples from this project can be found here: [examples](https://github.com/prohetamine/readme-styled/blob/main/examples)
+Run in development mode
+
+```sh
+$ npm run dev
+```
+
+Building a project is only necessary if you have exited developer mode
+
+```sh
+$ npm run build
+```
 
 ### Contacts
 
