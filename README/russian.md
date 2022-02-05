@@ -12,7 +12,7 @@
 
 ### С чего начать
 
-Клонируйте этот репозиторий и установите nodejs
+Клонируйте этот репозиторий и установите nodejs.
 
 ```sh
 $ git clone git@github.com:prohetamine/radio-launcher.git
@@ -23,21 +23,21 @@ $ yarn
 
 ### Примеры и описание
 
-Чтобы запустить лаунчер, используйте команду
+Чтобы запустить лаунчер, используйте команду.
 
 ```sh
 $ yarn start
 ```
 
-Лаунчер прочно связан с [radio-station](https://github.com/prohetamine/radio-station) и не можете работать без нее, войдите в систему, используя данные, предоставленные [radio-station](https://github.com/prohetamine/radio-station)
+Лаунчер прочно связан с [radio-station](https://github.com/prohetamine/radio-station) и не можете работать без нее, войдите в систему, используя данные, предоставленные [radio-station](https://github.com/prohetamine/radio-station).
 
 ![auth](https://github.com/prohetamine/radio-launcher/blob/main/media/0.png)
 
-Данные для входа в систему могут быть изменены, читай документацию [radio-station](https://github.com/prohetamine/radio-station)
+Данные для входа в систему могут быть изменены, читай документацию [radio-station](https://github.com/prohetamine/radio-station).
 
 ![auth](https://github.com/prohetamine/radio-launcher/blob/main/media/1.png)
 
-Это главное и единственное меню, но пока треков нет эфир не начнется
+Это главное и единственное меню, но пока треков нет эфир не начнется.
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/2.png)
 
@@ -45,15 +45,15 @@ $ yarn start
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/3.png)
 
-Изменение внешнего вида и прочие настройки [YouTube](https://youtu.be/VpjbWQkOE6Y)
+Изменение внешнего вида и прочие настройки [YouTube](https://youtu.be/VpjbWQkOE6Y).
 
-Запуск в режиме разработки, все методы API также можно найти в [radio-station](https://github.com/prohetamine/radio-station) документация
+Запуск в режиме разработки, все методы API также можно найти в [radio-station](https://github.com/prohetamine/radio-station) документация.
 
 ```sh
 $ yarn dev
 ```
 
-Сборка проекта необходимо только в том случае, если вы вышли из режима разработчика
+Сборка проекта необходимо только в том случае, если вы вышли из режима разработчика.
 
 ```sh
 $ yarn build

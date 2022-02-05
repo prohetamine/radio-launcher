@@ -12,7 +12,7 @@ I decided that I wanted to be a radio host, but I had no particular desire to un
 
 ### Get started
 
-Clone the github repository and install nodejs
+Clone the github repository and install nodejs.
 
 ```sh
 $ git clone git@github.com:prohetamine/radio-launcher.git
@@ -23,21 +23,21 @@ $ yarn
 
 ### Examples and description
 
-To launch the launcher, use the command
+To launch the launcher, use the command.
 
 ```sh
 $ yarn start
 ```
 
-The launcher is firmly connected with [radio-station](https://github.com/prohetamine/radio-station) and cannot work without it, log in using the data provided by the [radio-station](https://github.com/prohetamine/radio-station)
+The launcher is firmly connected with [radio-station](https://github.com/prohetamine/radio-station) and cannot work without it, log in using the data provided by the [radio-station](https://github.com/prohetamine/radio-station).
 
 ![auth](https://github.com/prohetamine/radio-launcher/blob/main/media/0.png)
 
-The login details can be changed, read the [radio-station](https://github.com/prohetamine/radio-station) documentation
+The login details can be changed, read the [radio-station](https://github.com/prohetamine/radio-station) documentation.
 
 ![auth](https://github.com/prohetamine/radio-launcher/blob/main/media/1.png)
 
-This is the main and only menu, but so far there are no tracks and the broadcast will not begin
+This is the main and only menu, but so far there are no tracks and the broadcast will not begin.
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/2.png)
 
@@ -45,15 +45,15 @@ We are on the air, dragging tracks from the "Tracks" and "Favorites" sections to
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/3.png)
 
-You can change the appearance [YouTube](https://youtu.be/VpjbWQkOE6Y)
+You can change the appearance [YouTube](https://youtu.be/VpjbWQkOE6Y).
 
-Run in development mode, all API methods can also be found in [radio-station](https://github.com/prohetamine/radio-station) documentation
+Run in development mode, all API methods can also be found in [radio-station](https://github.com/prohetamine/radio-station) documentation.
 
 ```sh
 $ yarn dev
 ```
 
-Building a project is only necessary if you have exited developer mode
+Building a project is only necessary if you have exited developer mode.
 
 ```sh
 $ yarn build
