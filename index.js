@@ -52,7 +52,7 @@ app.listen(port, () => {
     env: 'node'
   })
 
-  const message = splitSlice(`It will take some time to start and start playback in the browser... open the page and wait. If you have any questions, please contact telegram: @prohetamine. And don't be afraid to help the project. by Stas Prohetamie 2022.02.04`, 60, { space: true, align: 'left' }).join('|')
+  const message = splitSlice(`It will take some time to start and start playback in the browser... open the page and wait. If you have any questions, please contact telegram: @prohetamine. And don't be afraid to help the project. by Stas Prohetamie 2022.01.27`, 60, { space: true, align: 'left' }).join('|')
 
   CFonts.say(message, {
     font: 'console',
