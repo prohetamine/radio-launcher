@@ -29,6 +29,14 @@ To launch the launcher, use the command
 $ yarn start
 ```
 
+The launcher is firmly connected with radio-station and cannot work without it, log in using the data provided by the radio-station
+
+![auth](https://github.com/prohetamine/radio-launcher/blob/main/media/0.png)
+
+![auth](https://github.com/prohetamine/radio-launcher/blob/main/media/1.png)
+
+![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/2.png)
+
 Run in development mode
 
 ```sh
