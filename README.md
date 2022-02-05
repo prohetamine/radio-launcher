@@ -17,7 +17,8 @@ Clone the github repository and install nodejs
 ```sh
 $ git clone git@github.com:prohetamine/radio-launcher.git
 $ cd radio-launcher
-$ npm install
+$ npm install -g yarn
+$ yarn
 ```
 
 ### Examples and description
@@ -25,19 +26,19 @@ $ npm install
 To launch the launcher, use the command
 
 ```sh
-$ npm run start
+$ yarn start
 ```
 
 Run in development mode
 
 ```sh
-$ npm run dev
+$ yarn dev
 ```
 
 Building a project is only necessary if you have exited developer mode
 
 ```sh
-$ npm run build
+$ yarn build
 ```
 
 ### Contacts
