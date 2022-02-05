@@ -127,10 +127,12 @@ const MainNavigation = observer(() => {
   })
 
   const _audio = useAudio()
+
   useMediaSource({
     audio: _audio,
     socket
   })
+
   const {
     volumeAudio,
     volumeStream,
