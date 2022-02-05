@@ -45,6 +45,8 @@ We are on the air, dragging tracks from the tracks and favorites sections to the
 
 ![menu](https://github.com/prohetamine/radio-launcher/blob/main/media/3.png)
 
+You can change the appearance [YouTube](https://youtu.be/VpjbWQkOE6Y)
+
 Run in development mode
 
 ```sh
