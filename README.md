@@ -47,7 +47,7 @@ We are on the air, dragging tracks from the tracks and favorites sections to the
 
 You can change the appearance [YouTube](https://youtu.be/VpjbWQkOE6Y)
 
-Run in development mode
+Run in development mode, all API methods can also be found in [radio-station](https://github.com/prohetamine/radio-station) documentation
 
 ```sh
 $ yarn dev
