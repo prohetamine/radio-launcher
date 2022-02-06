@@ -3,7 +3,7 @@
 ##### README is available in the following languages: [Russian](https://github.com/prohetamine/radio-launcher/blob/main/README/russian.md) | [English](https://github.com/prohetamine/radio-launcher/blob/main/README.md)
 
 
-# radio-launcher
+# Radio Launcher
 
 > radio-launcher - radio-station client.
 
