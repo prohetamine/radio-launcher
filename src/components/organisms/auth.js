@@ -51,9 +51,9 @@ const Auth = observer(() => {
 
   useEffect(() => {
     if (form.login && form.password && form.host) {
-      auth.login = form.login
-      auth.password = form.password
-      auth.host = `http://${form.host}/`
+      auth.login = form.login.trim()
+      auth.password = form.password.trim()
+      auth.host = `http://${form.host.trim()}/`
     }
   }, [form, auth])
 

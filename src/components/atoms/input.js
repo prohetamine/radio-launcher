@@ -76,6 +76,7 @@ const _Input = observer(({ type, value, onChange, icons, placeholder, style }) =
               ? (
                 <>
                   <Input
+                    type={type}
                     placeholder={placeholder}
                     theme={settings.theme}
                     autoFocus={true}
