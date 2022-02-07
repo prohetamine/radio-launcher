@@ -85,7 +85,7 @@ const Auth = observer(() => {
         <Host
           style={{ width: '300px' }}
           value={form.host}
-          placeholder='IP:PORT'
+          placeholder='host'
           onChange={
             value =>
               setForm(form => ({
