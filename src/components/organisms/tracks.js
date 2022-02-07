@@ -106,7 +106,7 @@ const Tracks = observer(() => {
                 theme={store.settings.theme}
                 onLoad={
                   (blob, name) => {
-                    return request.post(`/load?name=${name}`, blob, {
+                    return request.post(`/load?name=${window.encodeURIComponent(name)}`, blob, {
                       headers: {
                         'Content-Type': blob.type
                       }
