@@ -15,7 +15,7 @@
 Клонируйте этот репозиторий и установите nodejs.
 
 ```sh
-$ git clone git@github.com:prohetamine/radio-launcher.git
+$ git clone https://github.com/prohetamine/radio-launcher.git
 $ cd radio-launcher
 $ npm install -g yarn
 $ yarn
