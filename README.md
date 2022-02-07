@@ -15,7 +15,7 @@ I decided that I wanted to be a radio host, but I had no particular desire to un
 Clone the github repository and install nodejs.
 
 ```sh
-$ git clone git@github.com:prohetamine/radio-launcher.git
+$ git clone https://github.com/prohetamine/radio-launcher.git
 $ cd radio-launcher
 $ npm install -g yarn
 $ yarn
