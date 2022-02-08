@@ -1,6 +1,6 @@
 {
   "name": "radio-launcher",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "🎙 📡 A free radio station on node js with a simple setup and the ability to conduct live broadcasts on the site",
   "main": "radio-station/index.js",
   "scripts": {
